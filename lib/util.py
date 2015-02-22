@@ -1,4 +1,20 @@
+"""
+This module defines utility functions.
+"""
+
 def auto_bind(window, prefix='on', excludes=[]):
+    """
+    Function to automatically connect signals.
+
+    Parameters
+    ----------
+    window : Gtk.Container
+        the window where the magic shall happen
+    prefix : str, default "on"
+        name prefix of the event handler methods
+    excludes : list
+        list of methods names that should be excluded from auto connecting
+    """
     for attr in dir(window):
         if ((attr not in excludes) and (attr.startswith(prefix))):
             value = getattr(window, attr)
